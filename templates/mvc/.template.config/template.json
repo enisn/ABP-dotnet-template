@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "enisn",
+    "classifications": [ "Web" ], 
+    "name": "ABP App Template",
+    "identity": "ABP.Framework.App.CSharp",         
+    "groupIdentity":"ABP.Framework.App",
+    "shortName": "abp",
+    "tags": {
+      "language": "C#",
+      "type":"project"
+    },
+    "preferNameDirectory": true,
+    "sourceName": "MyCompany.MyProject",
+    "symbols":{
+      "Database":{
+        "type":"parameter",
+        "datatype": "choice",
+        "defaultValue":"EfCore",
+        "choices": [
+          {
+            "choice": "EfCore",
+            "description": "Entity Framework Core"
+          },
+          {
+            "choice": "MongoDb",
+            "description":"MongoDb Provider"
+          }
+        ]
+      },
+      "MongoDb":{
+        "type": "computed",
+        "value": "(Database == \"MongoDb\")"
+      },
+      "EfCore":{
+        "type": "computed",
+        "value": "(Database == \"EfCore\")"
+      }
+    },
+    "sources": [ 
+        { 
+            "modifiers": 
+            [ 
+                { 
+                    "condition": "(Database != \"EfCore\")", 
+                    "exclude": 
+                    [ 
+                        "**/*.EntityFrameworkCore/**/*",
+                        "**/*.EntityFrameworkCore.Tests/**/*"
+                    ] 
+                },
+                { 
+                    "condition": "(Database != \"MongoDb\")", 
+                    "exclude": 
+                    [ 
+                        "**/*.MongoDB/**/*",
+                        "**/*.MongoDB.Tests/**/*"
+                    ] 
+                }
+            ] 
+        } 
+    ]
+  }
