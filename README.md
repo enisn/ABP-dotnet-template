@@ -1,6 +1,7 @@
 # ABP-dotnet-template
- Dotnet template version of ABP Framework.
-
+ This is an example demo of dotnet template version of ABP Framework. Supports only database selection.
+ 
+ It uses v4.4.0 app template of ABP.
 
 
 ## Installation
