@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj" />
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.Application" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="4.4.0" />
+    <PackageReference Include="olo.Abp.TenantManagement.Application" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="4.4.0" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="4.4.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "enisn",
+  "classifications": [
+    "Web"
+  ],
+  "name": "ABP App Template",
+  "identity": "ABP.Framework.App.CSharp",
+  "groupIdentity": "ABP.Framework.App",
+  "shortName": "abp",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": true,
+  "sourceName": "MyCompanyName.MyProjectName",
+  "symbols": {
+    "Database": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "EfCore",
+      "choices": [
+        {
+          "choice": "EfCore",
+          "description": "Entity Framework Core"
+        },
+        {
+          "choice": "MongoDb",
+          "description": "MongoDb Provider"
+        }
+      ]
+    },
+    "MongoDb": {
+      "type": "computed",
+      "value": "(Database == \"MongoDb\")"
+    },
+    "EfCore": {
+      "type": "computed",
+      "value": "(Database == \"EfCore\")"
+    },
+    "ConnectionString": {
+      "type": "parameter",
+      "datatype": "text",
+      "description": "Connection String of new application",
+      "defaultValue": "Server=(LocalDb)\\MSSQLLocalDB;Database=MyProject;Trusted_Connection=True",
+      "replaces": "__connectionstring"
+    },
+    "SeperatedIdentityServer": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If presented, Identity Server will be created seperated."
+    },
+    "UI": {
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "mvc",
+      "choices": [
+        {
+          "choice": "mvc",
+          "description": "MVC App with Razor Pages"
+        },
+        {
+          "choice": "angular",
+          "description": "ASP.NET Core Backend & Angular Client"
+        },
+        {
+          "choice": "blazor",
+          "description": "ASP.NET Core Backend & Blazor Client"
+        },
+        {
+          "choice": "blazor-server",
+          "description": "Blazor Server Application"
+        }
+      ]
+    },
+    "Blazor":{
+      "type": "computed",
+      "value": "(UI == \"blazor\")"
+    },
+    "BlazorServer":{
+      "type": "computed",
+      "value": "(UI == \"blazor-server\")"
+    },
+    "MVC":{
+      "type": "computed",
+      "value": "(UI == \"mvc\")"
+    },
+    "Tiered": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Tiered Architecture"
+    },
+    "Mobile":{
+      "type": "parameter",
+      "datatype": "choice",
+      "defaultValue": "None",
+      "choices": [
+        { 
+          "choice": "None",
+          "description": "None of Mobile Application"
+        },
+        {
+          "choice": "ReactNative",
+          "description": "React Native Mobile Application Client"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(Database == \"EfCore\")",
+          "rename": {
+            "__connectionstring": "Server=(LocalDb)\\MSSQLLocalDB;Database=MyProject;Trusted_Connection=True"
+          }
+        },
+        {
+          "condition": "(Database == \"MongoDb\")",
+          "rename": {
+            "__connectionstring": "mongodb://localhost:27017/MyProject"
+          }
+        },
+        {
+          "condition": "(UI == \"mvc\")",
+          "exclude": [
+            "**/*.HttpApi.Host*/**/*",
+            "angular/**/*",
+            "react-native/**/*",
+            "**/*.Blazor/**/*",
+            "**/*.Blazor*/**/*"
+          ]
+        },
+        {
+          "condition": "(UI == \"angular\")",
+          "exclude": [
+            "react-native/**/*",
+            "**/*.Blazor/**/*",
+            "**/*.Blazor.*/**/*",
+            "**/*.Web/**/*",
+            "**/*.Web.*/**/*"
+          ],
+          "include": [
+            "**/*.HttpApi.Host.*/**/*"
+          ]
+        },
+        {
+          "condition": "(UI == \"blazor\")",
+          "exclude": [
+            "**/*.HttpApi.Host.*/**/*",
+            "angular/**/*",
+            "react-native/**/*",
+            "**/*.Blazor.*/**/*",
+            "**/*.Web/**/*",
+            "**/*.Web.*/**/*"
+          ]
+        },
+        {
+          "condition": "(UI == \"blazor-server\")",
+          "exclude": [
+            "**/*.HttpApi.Host*/**/*",
+            "angular/**/*",
+            "react-native/**/*",
+            "**/*.Blazor/**/*",
+            "**/*.Web/**/*",
+            "**/*.Web.*/**/*"
+          ]
+        },
+        {
+          "condition": "(Database != \"EfCore\")",
+          "exclude": [
+            "**/*.EntityFrameworkCore/**/*",
+            "**/*.EntityFrameworkCore.Tests/**/*"
+          ]
+        },
+        {
+          "condition": "(Database != \"MongoDb\")",
+          "exclude": [
+            "**/*.MongoDB/**/*",
+            "**/*.MongoDB.Tests/**/*"
+          ]
+        },
+        {
+          "condition": "(SeperatedIdentityServer == true)",
+          "exclude": [
+            "**/*.HttpApi.HostWithIds/**/*"
+          ],
+          "include": [
+            "**/*.HttpApi.Host/**/*",
+            "**/*.IdentityServer/**/*"
+          ]
+        },
+        {
+          "condition": "(SeperatedIdentityServer == false)",
+          "exclude": [
+            "**/*.IdentityServer/**/*",
+            "**/*.HttpApi.Host/**/*"
+          ],
+          "include": [
+            "**/*.HttpApi.HostWithIds/**/*"
+          ]
+        },
+        {
+          "condition": "(Mobile == \"ReactNative\")",
+          "include": [
+            "**/react-native/**/*"
+          ]
+        }
+      ]
+    }
+  ]
+}
