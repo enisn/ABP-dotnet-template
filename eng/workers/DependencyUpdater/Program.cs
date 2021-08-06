@@ -9,7 +9,7 @@ namespace DependencyUpdater
     {
         static void Main(string[] args)
         {
-            var files = Directory.GetFiles("/Users/enisnecipoglu/Projects/ABP-dotnet-template/templates/app", "*.csproj", SearchOption.AllDirectories);
+            var files = Directory.GetFiles("../../../../../../templates/app", "*.csproj", SearchOption.AllDirectories);
             Console.WriteLine("************* Found files:");
             foreach (var file in files)
             {
@@ -46,7 +46,7 @@ namespace DependencyUpdater
 
             var voloWithSlashIndex = result.IndexOf("\\Volo");
             var csprojIndex = result.IndexOf(".csproj");
-            result = result.Remove(voloWithSlashIndex, csprojIndex - voloStartIndex);
+            result = result.Remove(voloWithSlashIndex, csprojIndex + 7 - voloWithSlashIndex);
 
             var lastQuoteIndex = result.LastIndexOf('\"');
             result = result.Insert(lastQuoteIndex + 1, $" Version=\"{version}\"");
