@@ -14,6 +14,27 @@
           "text": "Connection String"
         },
         "isVisible": "true"
+      },
+      {
+        "id": "UI",
+        "name": {
+          "text": "UI Technology"
+        },
+        "isVisible": "true"
+      },
+      {
+        "id": "Tiered",
+        "name": {
+          "text" : "Tiered Application Architecture"
+        },
+        "isVisible": "true"
+      },
+      {
+        "id": "Mobile",
+        "name":{
+          "text": "Mobile Application Client"
+        },
+        "isVisible": true
       }
     ]
   }

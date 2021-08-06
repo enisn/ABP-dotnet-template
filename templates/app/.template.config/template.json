@@ -73,6 +73,10 @@
         }
       ]
     },
+    "Angular":{
+      "type": "computed",
+      "value": "(UI == \"angular\")"
+    },
     "Blazor":{
       "type": "computed",
       "value": "(UI == \"blazor\")"
