@@ -7,8 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.Domain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.Application", "src\MyCompany.MyProject.Application\MyCompany.MyProject.Application.csproj", "{1A94A50E-06DC-43C1-80B5-B662820EC3EB}"
 EndProject
+#if (EfCore)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.EntityFrameworkCore", "src\MyCompany.MyProject.EntityFrameworkCore\MyCompany.MyProject.EntityFrameworkCore.csproj", "{C956DD76-69C8-4A9C-83EA-D17DF83340FD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.EntityFrameworkCore.Tests", "test\MyCompany.MyProject.EntityFrameworkCore.Tests\MyCompany.MyProject.EntityFrameworkCore.Tests.csproj", "{1FE30EB9-74A9-47F5-A9F6-7B1FAB672D81}"
+EndProject
+#endif
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.Web", "src\MyCompany.MyProject.Web\MyCompany.MyProject.Web.csproj", "{068855E8-9240-4F1A-910B-CF825794513B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CA9AC87F-097E-4F15-8393-4BC07735A5B0}"
@@ -27,8 +31,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.HttpApi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.HttpApi.Client", "src\MyCompany.MyProject.HttpApi.Client\MyCompany.MyProject.HttpApi.Client.csproj", "{3B5A0094-670D-4BB1-BFDD-61B88A8773DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.EntityFrameworkCore.Tests", "test\MyCompany.MyProject.EntityFrameworkCore.Tests\MyCompany.MyProject.EntityFrameworkCore.Tests.csproj", "{1FE30EB9-74A9-47F5-A9F6-7B1FAB672D81}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.TestBase", "test\MyCompany.MyProject.TestBase\MyCompany.MyProject.TestBase.csproj", "{91853F21-9CD9-4132-BC29-A7D5D84FFFE7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.Domain.Tests", "test\MyCompany.MyProject.Domain.Tests\MyCompany.MyProject.Domain.Tests.csproj", "{E512F4D9-9375-480F-A2F6-A46509F9D824}"
@@ -39,8 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.DbMigra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.MongoDB.Tests", "test\MyCompany.MyProject.MongoDB.Tests\MyCompany.MyProject.MongoDB.Tests.csproj", "{9DD122E4-7C0D-4856-B2EC-984162620E47}"
 EndProject
+#if (MongoDb)
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyProject.MongoDB", "src\MyCompany.MyProject.MongoDB\MyCompany.MyProject.MongoDB.csproj", "{A08B9FC5-A115-4D81-9649-87C6A3CC9440}"
 EndProject
+#endif
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
